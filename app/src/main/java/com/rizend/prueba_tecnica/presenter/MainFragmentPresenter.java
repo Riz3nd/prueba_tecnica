@@ -25,4 +25,14 @@ public class MainFragmentPresenter implements IMainFragment.Presenter {
         view.showAllContacts(users);
     }
 
+    @Override
+    public void showProgressBar() {
+        view.showProgressBar();
+    }
+
+    @Override
+    public void onFailureConsult() {
+        view.onFailureConsult();
+    }
+
 }

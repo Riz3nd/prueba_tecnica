@@ -1,5 +1,7 @@
 package com.rizend.prueba_tecnica.view.fragments;
 
+import static com.rizend.prueba_tecnica.view.MainActivity.actionBar;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -19,6 +21,7 @@ public class SplashScreenFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        setHasOptionsMenu(false);
         super.onCreate(savedInstanceState);
     }
 
@@ -32,12 +35,9 @@ public class SplashScreenFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Navigation.findNavController(binding.getRoot()).navigate(R.id.action_splashScreen_to_mainFragment);
-            }
-        },800);
+        actionBar.hide();
+        new Handler().postDelayed(() -> Navigation.findNavController(binding.getRoot())
+                .navigate(R.id.action_splashScreen_to_mainFragment),1500);
     }
 
 }

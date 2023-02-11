@@ -11,8 +11,12 @@ public interface IMainFragment {
     interface Presenter {
         void getAllContacts();
         void showAllContacts(ArrayList<User> users);
+        void showProgressBar();
+        void onFailureConsult();
     }
     interface View {
         void showAllContacts(ArrayList<User> users);
+        void showProgressBar();
+        void onFailureConsult();
     }
 }

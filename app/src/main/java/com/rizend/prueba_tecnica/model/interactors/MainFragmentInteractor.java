@@ -1,5 +1,9 @@
 package com.rizend.prueba_tecnica.model.interactors;
 
+import static androidx.core.content.PackageManagerCompat.LOG_TAG;
+
+import android.util.Log;
+
 import com.google.gson.JsonObject;
 import com.rizend.prueba_tecnica.api.RetrofitClient;
 import com.rizend.prueba_tecnica.interfaces.IMainFragment;
@@ -30,12 +34,16 @@ public class MainFragmentInteractor implements IMainFragment.Interator {
             public void onResponse(Call<ArrayList<User>> call, Response<ArrayList<User>> response) {
                 if (response.isSuccessful()) {
                     presenter.showAllContacts(response.body());
+                    presenter.showProgressBar();
+                }else {
+                    presenter.onFailureConsult();
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<User>> call, Throwable t) {
-                System.out.println("Error" + t.getMessage());
+                presenter.onFailureConsult();
+                Log.e("Retrofit", t.getMessage());
             }
 
         });
