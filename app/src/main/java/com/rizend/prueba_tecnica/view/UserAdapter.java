@@ -75,7 +75,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.viewHolder>{
         if (str.length() != 0) {
             mData.clear();
             for (User userlist : auxData) {
-                if (userlist.getUsername().toLowerCase().contains(str.toLowerCase())) {
+                if (userlist.getName().toLowerCase().contains(str.toLowerCase())) {
                     mData.add(userlist);
                 }
             }
